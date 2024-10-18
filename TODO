@@ -1,0 +1,11 @@
+2. JSON ve XML 'ler üretilecek.
+
+1. Fixed harcama ise bir kutu tıklansın.
+Her ay için otomatik kayıt oluştursun.
+
+2. Fixed harcamalar yanda listelensin.
+  
+Fixed harcamaların birinde bir güncelleme (zam, tarih) varsa seçilebilsin (üstüne tıkla), 
+Ödeme kaydını getir ve sonraki aylar için güncelle.
+
+3. Gelirler de girilebilsin.
