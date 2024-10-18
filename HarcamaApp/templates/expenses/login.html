@@ -1,0 +1,27 @@
+{% extends 'expenses/base.html' %}
+{% load crispy_forms_filters %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 col-lg-4">
+        {% load tz %}
+        {{ your_datetime_field|timezone:"Europe/Istanbul" }}
+        <div class="form-container">
+            <h2 class="text-center mb-4">
+                <i class="fas fa-lock me-2"></i>Giriş
+            </h2>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt me-2"></i>Devam
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

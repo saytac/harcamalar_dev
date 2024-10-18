@@ -1,0 +1,32 @@
+{% extends 'expenses/base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Harcama Kaydı</h2>
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary mt-3">Kaydet</button>
+    </form>
+
+    {% if expenses %}
+        <h3 class="mt-5">Son Harcamalar</h3>
+        <ul class="list-group">
+            {% for expense in expenses %}
+                <li class="list-group-item">
+                    ID: {{ expense.id }} - {{ expense.timestamp|date:"d.m.Y H:i" }} - {{ expense.get_kalem_display }} -
+                    {{ expense.fiyat }} TL ({{ expense.get_kart_display }})
+                    {% if expense.bilgi %}<br><small>{{ expense.bilgi }}</small>{% endif %}
+{#                  {% if expense.image %}<br><img src="{{ expense.image.url }}" alt="Expense Image" style="max-width: 100px; max-height: 100px;">{% endif %}#}
+                </li>
+            {% empty %}
+                <li class="list-group-item">No expenses found.</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="mt-5">No recent expenses.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'expenses/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Debug: All Expenses</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Timestamp</th>
+                <th>Kalem</th>
+                <th>Kart</th>
+                <th>Fiyat</th>
+                <th>Bilgi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{ expense.id }}</td>
+                <td>{{ expense.timestamp }}</td>
+                <td>{{ expense.get_kalem_display }}</td>
+                <td>{{ expense.get_kart_display }}</td>
+                <td>{{ expense.fiyat }}</td>
+                <td>{{ expense.bilgi|truncatechars:30 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
